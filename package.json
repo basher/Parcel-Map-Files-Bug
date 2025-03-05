@@ -14,12 +14,15 @@
         "static-assets-move": "node ./scripts/static-assets-move",
         "static-assets-move-localserver": "node ./scripts/static-assets-move-localserve",
         "prestart": "rm -rf .parcel-cache",
-        "start": "npm install && npm run start:parcel",
+        "start": "npm install && cross-env NODE_ENV=development && npm run start:parcel",
         "start:parcel": "parcel watch src/javascript/index.ts --dist-dir public --hmr-port 1234 --target app",
         "prebuild": "rm -rf public/build",
-        "build": "npm install && npm run build:parcel",
+        "build": "npm install && cross-env NODE_ENV=production && npm run build:parcel",
         "build:parcel": "parcel build index.html --dist-dir public/build",
         "postbuild": "npm run static-assets-rename && npm run static-assets-move",
+        "storybook": "storybook dev -p 6006",
+        "build-storybook": "storybook build",
+        "publish-storybook": "npm run build && npm run build-storybook",
         "prelocalserver": "rm -rf ./_example-pages/build && npm run build && npm run static-assets-move-localserver",
         "localserver": "npx http-server _example-pages/"
     },
@@ -31,10 +34,18 @@
         "not dead"
     ],
     "devDependencies": {
+        "@storybook/addon-a11y": "^8.4.7",
+        "@storybook/addon-docs": "^8.4.7",
+        "@storybook/addon-essentials": "^8.4.7",
+        "@storybook/blocks": "^8.4.7",
+        "@storybook/html": "^8.4.7",
+        "@storybook/html-vite": "^8.4.7",
         "cheerio": "^1.0.0",
         "colors": "^1.4.0",
+        "cross-env": "^7.0.3",
         "fs-extra": "^11.3.0",
         "parcel": "^2.12.0",
+        "storybook": "^8.4.7",
         "typescript": "^5.7.3"
     }
 }

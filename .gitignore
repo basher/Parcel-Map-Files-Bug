@@ -2,3 +2,4 @@ node_modules
 public/*
 *.map
 .parcel-cache
+storybook-static

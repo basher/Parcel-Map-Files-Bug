@@ -13,3 +13,26 @@
 
 ## Testing MAP files in a test webpage
 See `/_example-pages/README.md`.
+
+## Storybook
+> The `<script>` tag in `.storybook/preview-head.html` use placeholders, which reference environment variables defined in `.env` files.
+
+```
+<script defer src="%STORYBOOK_JS_PATH%"></script>
+```
+
+This is resolved as follows:
+
+### `.env.development`
+```
+STORYBOOK_JS_PATH=index.js
+```
+
+### `.env.production`
+```
+STORYBOOK_JS_PATH=build/javascript/index.js
+```
+
+### Build and publish Storybook locally
+- `npm run publish-storybook` - builds all Storybook dependencies, and copies output to `storybook-static` directory.
+- `npx http-server ./storybook-static` - test Storybook production build on local server.
