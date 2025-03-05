@@ -1,0 +1,6 @@
+# Ignore everything in this directory
+*
+# Except these files/folders
+!.gitignore
+!index.html
+!README.md

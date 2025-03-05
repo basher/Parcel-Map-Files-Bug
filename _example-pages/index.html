@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Test Page</title>
+</head>
+<body>
+    <label for="_Q1">Label</label>
+    <m-input-singleline
+        data-questionid="_Q1"
+        data-questiongroup="_QGroup"
+        data-properties='{
+            "labels":{
+                "pre":"pre-label",
+                "post":"post-label"
+            }
+        }'
+    >
+        <span class="a-label-pre"></span>
+        <input type="text" id="_Q1" class="a-input-singleline" />
+        <span class="a-label-post"></span>
+    </m-input-singleline>
+
+<script defer type="module" src="index.js"></script>
+</body>
+</html>

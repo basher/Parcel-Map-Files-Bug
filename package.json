@@ -1,0 +1,40 @@
+{
+    "name": "parcel-map-files-bug",
+    "description": "Minimal repo to demo issues with debugging JavaScript using Parcel's compiled MAP files",
+    "author": "",
+    "version": "0.0.1",
+    "license": "ISC",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/basher/Parcel-Map-Files-Bug"
+    },
+    "scripts": {
+        "reset": "rm -rf node_modules/ && npm install",
+        "static-assets-rename": "node ./scripts/static-assets-rename",
+        "static-assets-move": "node ./scripts/static-assets-move",
+        "static-assets-move-localserver": "node ./scripts/static-assets-move-localserve",
+        "prestart": "rm -rf .parcel-cache",
+        "start": "npm install && npm run start:parcel",
+        "start:parcel": "parcel watch src/javascript/index.ts --dist-dir public --hmr-port 1234 --target app",
+        "prebuild": "rm -rf public/build",
+        "build": "npm install && npm run build:parcel",
+        "build:parcel": "parcel build index.html --dist-dir public/build",
+        "postbuild": "npm run static-assets-rename && npm run static-assets-move",
+        "prelocalserver": "rm -rf ./_example-pages/build && npm run build && npm run static-assets-move-localserver",
+        "localserver": "npx http-server _example-pages/"
+    },
+    "targets": {
+        "app": {}
+    },
+    "browserslist": [
+        "defaults",
+        "not dead"
+    ],
+    "devDependencies": {
+        "cheerio": "^1.0.0",
+        "colors": "^1.4.0",
+        "fs-extra": "^11.3.0",
+        "parcel": "^2.12.0",
+        "typescript": "^5.7.3"
+    }
+}
